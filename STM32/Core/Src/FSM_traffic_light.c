@@ -74,7 +74,7 @@ void trafficLightRun() {
             }
             break;
         case AMBER1_RED2:
-        	HAL_GPIO_WritePin(GPIOA, GREEN_LED1_Pin | RED_LED2_Pin, 0);
+        	HAL_GPIO_WritePin(GPIOA, AMBER_LED1_Pin | RED_LED2_Pin, 0);
 			segment_buffer[0] = counter/10;
 			segment_buffer[1] = counter%10;
 			segment_buffer[2] = counter/10;

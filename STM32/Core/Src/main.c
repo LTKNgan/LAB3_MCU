@@ -106,14 +106,14 @@ int main(void)
   {
 	  switch (btn1_status) {
 	  case MODE1:
-		  if (timeRed == timeGreen + timeAmber) trafficLightRun();
-		  else {
+		  if (timeRed != timeGreen + timeAmber) {
 				allLEDoff();
 				segment_buffer[0] = -1;
 				segment_buffer[1] = -1;
 				segment_buffer[2] = -1;
 				segment_buffer[3] = -1;
 		  }
+		  else trafficLightRun();
 		  displaySegment();
 		  if (isButton1Pressed()) {
 			  btn1_status = MODE2;

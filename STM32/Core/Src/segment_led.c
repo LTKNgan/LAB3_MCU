@@ -9,6 +9,7 @@
 
 enum {SEG0=1, SEG1, SEG2, SEG3};
 int segment_status = INIT;
+int time_segment = 10;
 
 void displayNum(int num) {
 	switch (num)
@@ -82,7 +83,7 @@ void displaySegment() {
 	switch (segment_status) {
 	case INIT:
 		segment_status = SEG0;
-		setTimer2(250);
+		setTimer2(time_segment);
 		break;
 	case SEG0:
 		// enable led 0 and disable led 1, 2, 3
@@ -90,7 +91,7 @@ void displaySegment() {
 		HAL_GPIO_WritePin(GPIOA, EN0_Pin, 0);
 		displayNum(segment_buffer[0]);
 		if (timer2_flag) {
-			setTimer2(250);
+			setTimer2(time_segment);
 			segment_status = SEG1;
 		}
 		break;
@@ -100,7 +101,7 @@ void displaySegment() {
 		HAL_GPIO_WritePin(GPIOA, EN1_Pin, 0);
 		displayNum(segment_buffer[1]);
 		if (timer2_flag) {
-			setTimer2(250);
+			setTimer2(time_segment);
 			segment_status = SEG2;
 		}
 		break;
@@ -110,7 +111,7 @@ void displaySegment() {
 		HAL_GPIO_WritePin(GPIOA, EN2_Pin, 0);
 		displayNum(segment_buffer[2]);
 		if (timer2_flag) {
-			setTimer2(250);
+			setTimer2(time_segment);
 			segment_status = SEG3;
 		}
 		break;
@@ -120,11 +121,11 @@ void displaySegment() {
 		HAL_GPIO_WritePin(GPIOA, EN3_Pin, 0);
 		displayNum(segment_buffer[3]);
 		if (timer2_flag) {
-			setTimer2(250);
+			setTimer2(time_segment);
 			segment_status = SEG0;
 		}
 		break;
 	default:
 		break;
-}
+	}
 }
